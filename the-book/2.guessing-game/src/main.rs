@@ -16,7 +16,7 @@ fn main() // program entry point
 
     loop
     {
-        println!("Please input your guess."); // macro prompting for an input
+        println!("\x1b[37mPlease input your guess.\x1b[0m"); // macro prompting for an input
         let mut guess = String::new(); // create a new String variable to store the user input
         io::stdin().read_line(&mut guess).expect("Failed to read line"); // if the read_line method returns an error set to an error message
         let guess: u32 = match guess.trim().parse() { Ok(num) => num, Err(_) => continue };
@@ -25,9 +25,9 @@ fn main() // program entry point
 
         match guess.cmp(&secret_number) // compare guess to secret_number, return an Ordering, then match it
         {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => { println!("You win!"); break; }
+            Ordering::Less => println!("\x1b[34mToo small!\x1b[0m"),
+            Ordering::Greater => println!("\x1b[31mToo big!\x1b[0m"),
+            Ordering::Equal => { println!("\x1b[93mYou win!\x1b[0m"); break; }
         }
     }
 }
