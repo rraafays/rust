@@ -2,7 +2,7 @@ use std::io; // to botain user input we need the input ouput library from the st
 use std::cmp::Ordering; // Ordering enumerables
 use rand::Rng; // random number generation
 
-fn main() -> ! // program entry point
+fn main() // program entry point
 {
     println!("Guess the number!"); // macro prompting what the game is
 
@@ -19,7 +19,7 @@ fn main() -> ! // program entry point
         println!("Please input your guess."); // macro prompting for an input
         let mut guess = String::new(); // create a new String variable to store the user input
         io::stdin().read_line(&mut guess).expect("Failed to read line"); // if the read_line method returns an error set to an error message
-        let guess: u32 = guess.trim().parse().expect("Please type a number!"); // trim whitespace then parse it as an unsigned 32 bit integer
+        let guess: u32 = match guess.trim().parse() { Ok(num) => num, Err(_) => continue };
 
         println!("You guessed: {guess}"); // substitute the user's guess into a string
 
@@ -27,7 +27,7 @@ fn main() -> ! // program entry point
         {
             Ordering::Less => println!("Too small!"),
             Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => println!("You win!")
+            Ordering::Equal => { println!("You win!"); break; }
         }
     }
 }
