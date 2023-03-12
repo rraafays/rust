@@ -1,0 +1,28 @@
+use std::io;
+
+fn main() 
+{
+  let mut option = String::new();
+  println!("enter 0 or 1");
+  io::stdin().read_line(&mut option).expect("please enter a valid option");
+  let option: i32 = match option.trim().parse() { Ok(value) => value, Err(_) => 0 };
+
+  if option == 0 { println!("you entered {option}"); }
+  if option == 1 { println!("you entered {option}"); }
+  else { println!("i dont know what you entered"); }
+
+  let mut selection = String::new();
+  println!("enter a number between 1 and 5");
+  io::stdin().read_line(&mut selection).expect("please enter a valid value");
+  let selection: i32 = match selection.trim().parse() { Ok(value) => value, Err(_) => 0 };
+  
+  let animal = if selection == 1 { "cat" } else { "dog" }; // we can use if a statement because if itself is an expression
+  println!("you picked {animal}");
+
+  // let number = if selection == 1 { 1 } if selection == 2 { "two" }; // this doesnt work because rustc must know a definitve type
+
+}
+
+fn loop_egg
+{
+}
