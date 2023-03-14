@@ -31,9 +31,7 @@ fn first_word(string: &String) -> &str {
   let bytes = string.as_bytes();
 
   for (i, &item) in bytes.iter().enumerate() {
-    if item == b' ' {
-      return &string[..i];
-    }
+    if item == b' ' { return &string[..i]; }
   }
 
   &string[..]
@@ -43,9 +41,7 @@ fn second_word(string: &String) -> &str {
   let bytes = string.as_bytes();
 
   for (i, &item) in bytes.iter().enumerate() {
-    if item == b' ' {
-      return &string[i + 1..];
-    }
+    if item == b' ' { return &string[i + 1..]; }
   }
 
   &string[..]
